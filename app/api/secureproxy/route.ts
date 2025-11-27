@@ -200,7 +200,19 @@ async function handleProxy(req: NextRequest, endpoint: string) {
             validateStatus: () => true,
         })
 
-        const responseData = response.data as Buffer
+        const rawData = response.data as ArrayBuffer | Buffer
+        let responseBody: ArrayBuffer
+
+        if (rawData instanceof ArrayBuffer) {
+            responseBody = rawData
+        } else {
+            // Node.js Buffer -> ArrayBuffer
+            responseBody = rawData.buffer.slice(
+                rawData.byteOffset,
+                rawData.byteOffset + rawData.byteLength,
+            )
+        }
+
         const statusCode = response.status
         const contentType = response.headers['content-type']
 
@@ -215,7 +227,7 @@ async function handleProxy(req: NextRequest, endpoint: string) {
             resHeaders['Content-Type'] = contentType
         }
 
-        return new NextResponse(responseData, {
+        return new NextResponse(responseBody, {
             status: statusCode,
             headers: resHeaders,
         })
