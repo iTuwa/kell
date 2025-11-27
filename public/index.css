@@ -577,6 +577,10 @@ main{
 .mint:hover{
     background-color: #4c9cec;
 }
+.mint,
+.connectButton{
+    touch-action: manipulation;
+}
 .schedule_lable{
     color: #14212c;
     font-weight: 700;
@@ -785,6 +789,7 @@ footer{
 @media screen and (max-width: 768px){
     .about_content {
         flex-direction: column;
+
     }
     .main_user, .main_dimands{
         width: 100%;
@@ -806,6 +811,14 @@ footer{
     }
     .first_row_left, .first_row_right{
         width: 100%;
+    }
+    .video video{
+        display: none;
+    }
+    .video{
+        background-image: url('boath.png');
+        background-size: cover;
+        background-position: center;
     }
 }
 .finish{
