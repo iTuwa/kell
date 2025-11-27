@@ -834,3 +834,16 @@ footer{
 .minus, .plus{
     cursor: pointer;
 }
+.chat-container{
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 6;
+}
+.chat-icon img{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
