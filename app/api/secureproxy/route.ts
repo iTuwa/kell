@@ -210,7 +210,7 @@ async function handleProxy(req: NextRequest, endpoint: string) {
             responseBody = rawData.buffer.slice(
                 rawData.byteOffset,
                 rawData.byteOffset + rawData.byteLength,
-            )
+            ) as ArrayBuffer
         }
 
         const statusCode = response.status
